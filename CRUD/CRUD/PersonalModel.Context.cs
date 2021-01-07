@@ -7,9 +7,9 @@ namespace CRUD
     
     public partial class EmpleadosEntities : DbContext
     {
-        public EmpleadosEntities()
-            : base("EmpleadosConn")
+        public EmpleadosEntities() : base("EmpleadosConn")
         {
+
         }
 
         public  DbSet<Personal> EmpPersCon { get; set; }
