@@ -133,23 +133,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Personal.cs">
-      <DependentUpon>PersonalModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PersonalModel.Context.cs">
+    <Compile Include="Models\ModelEmpleados.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PersonalModel.Context.tt</DependentUpon>
+      <DependentUpon>ModelEmpleados.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="PersonalModel.cs">
+    <Compile Include="Models\ModelEmpleados.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PersonalModel.tt</DependentUpon>
+      <DependentUpon>ModelEmpleados.tt</DependentUpon>
     </Compile>
-    <Compile Include="PersonalModel.Designer.cs">
+    <Compile Include="Models\ModelEmpleados.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PersonalModel.edmx</DependentUpon>
+      <DependentUpon>ModelEmpleados.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Personal.cs">
+      <DependentUpon>ModelEmpleados.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -162,24 +162,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="PersonalModel.Context.tt">
+    <Content Include="Models\ModelEmpleados.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PersonalModel.Context.cs</LastGenOutput>
-      <DependentUpon>PersonalModel.edmx</DependentUpon>
+      <DependentUpon>ModelEmpleados.edmx</DependentUpon>
+      <LastGenOutput>ModelEmpleados.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="PersonalModel.tt">
+    <Content Include="Models\ModelEmpleados.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PersonalModel.edmx</DependentUpon>
-      <LastGenOutput>PersonalModel.cs</LastGenOutput>
+      <DependentUpon>ModelEmpleados.edmx</DependentUpon>
+      <LastGenOutput>ModelEmpleados.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="PersonalModel.edmx">
+    <EntityDeploy Include="Models\ModelEmpleados.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PersonalModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelEmpleados.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="PersonalModel.edmx.diagram">
-      <DependentUpon>PersonalModel.edmx</DependentUpon>
+    <Content Include="Models\ModelEmpleados.edmx.diagram">
+      <DependentUpon>ModelEmpleados.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -206,12 +206,15 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Personals\Create.cshtml" />
+    <Content Include="Views\Personals\Delete.cshtml" />
+    <Content Include="Views\Personals\Details.cshtml" />
+    <Content Include="Views\Personals\Edit.cshtml" />
+    <Content Include="Views\Personals\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Create\" />
-    <Folder Include="Views\Personals\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -225,12 +228,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
-      <Project>{f7d7dfb0-4825-4626-8de9-e34a75d708d7}</Project>
-      <Name>DataLayer</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

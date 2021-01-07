@@ -140,7 +140,6 @@ C:\Users\mfhernandezl\Documents\GitRepos\CRUD\CRUD\CRUD\bin\roslyn\vbc.rsp
 C:\Users\mfhernandezl\Documents\GitRepos\CRUD\CRUD\CRUD\bin\roslyn\VBCSCompiler.exe
 C:\Users\mfhernandezl\Documents\GitRepos\CRUD\CRUD\CRUD\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\mfhernandezl\Documents\GitRepos\CRUD\CRUD\CRUD\bin\Antlr3.Runtime.dll
-C:\Users\mfhernandezl\Documents\GitRepos\CRUD\CRUD\CRUD\bin\DataLayer.dll
 C:\Users\mfhernandezl\Documents\GitRepos\CRUD\CRUD\CRUD\bin\EntityFramework.dll
 C:\Users\mfhernandezl\Documents\GitRepos\CRUD\CRUD\CRUD\bin\EntityFramework.SqlServer.dll
 C:\Users\mfhernandezl\Documents\GitRepos\CRUD\CRUD\CRUD\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
@@ -154,7 +153,6 @@ C:\Users\mfhernandezl\Documents\GitRepos\CRUD\CRUD\CRUD\bin\System.Web.WebPages.
 C:\Users\mfhernandezl\Documents\GitRepos\CRUD\CRUD\CRUD\bin\System.Web.WebPages.dll
 C:\Users\mfhernandezl\Documents\GitRepos\CRUD\CRUD\CRUD\bin\System.Web.WebPages.Razor.dll
 C:\Users\mfhernandezl\Documents\GitRepos\CRUD\CRUD\CRUD\bin\WebGrease.dll
-C:\Users\mfhernandezl\Documents\GitRepos\CRUD\CRUD\CRUD\bin\DataLayer.pdb
 C:\Users\mfhernandezl\Documents\GitRepos\CRUD\CRUD\CRUD\bin\EntityFramework.xml
 C:\Users\mfhernandezl\Documents\GitRepos\CRUD\CRUD\CRUD\bin\EntityFramework.SqlServer.xml
 C:\Users\mfhernandezl\Documents\GitRepos\CRUD\CRUD\CRUD\bin\System.Web.Helpers.xml

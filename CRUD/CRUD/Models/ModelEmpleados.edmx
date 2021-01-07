@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EmpleadosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="EmpleadosModel_DB.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Personal">
           <Key>
             <PropertyRef Name="ID_personal" />
@@ -16,14 +16,14 @@
           <Property Name="Edad" Type="int" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
-        <EntityContainer Name="EmpleadosModelStoreContainer">
+        <EntityContainer Name="EmpleadosModel_DBStoreContainer">
           <EntitySet Name="Personal" EntityType="Self.Personal" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="EmpleadosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="EmpleadosModel_DB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Personal">
           <Key>
             <PropertyRef Name="ID_personal" />
@@ -43,9 +43,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EmpleadosModelStoreContainer" CdmEntityContainer="EmpleadosEntities">
+        <EntityContainerMapping StorageEntityContainer="EmpleadosModel_DBStoreContainer" CdmEntityContainer="EmpleadosEntities">
           <EntitySetMapping Name="Personal">
-            <EntityTypeMapping TypeName="EmpleadosModel.Personal">
+            <EntityTypeMapping TypeName="EmpleadosModel_DB.Personal">
               <MappingFragment StoreEntitySet="Personal">
                 <ScalarProperty Name="ID_personal" ColumnName="ID_personal" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />

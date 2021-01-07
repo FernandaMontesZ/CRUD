@@ -1,0 +1,68 @@
+﻿@model IEnumerable<CRUD.Models.Personal>
+
+@{
+    ViewBag.Title = "Información";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Información</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Crear Nuevo", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApePaterno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApeMaterno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Edad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                   @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApePaterno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApeMaterno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Edad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.ID_personal }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.ID_personal }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.ID_personal })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>
