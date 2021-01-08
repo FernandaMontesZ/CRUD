@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<CRUD.Models.Personal>
 
+
 @{
     ViewBag.Title = "Información";
 }
@@ -16,8 +17,8 @@
 <body>
     <p>
         @Html.ActionLink("Crear Nuevo", "Create")
-    </p>
-    <table class="table">
+ </p>
+    <table id="tblPersonal" class="table">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Nombre)
@@ -41,7 +42,7 @@
         {
             <tr>
                 <td>
-                   @Html.DisplayFor(modelItem => item.Nombre)
+                    @Html.DisplayFor(modelItem => item.Nombre)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ApePaterno)

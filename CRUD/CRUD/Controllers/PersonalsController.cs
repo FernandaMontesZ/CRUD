@@ -46,16 +46,26 @@ namespace CRUD.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID_personal,Nombre,ApePaterno,ApeMaterno,Edad,IsActive")] Personal personal)
+        public ActionResult Create(Personal personal)
         {
-            if (ModelState.IsValid)
-            {
                 db.Personal.Add(personal);
                 db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            //string message = "Se guarda Correctamente";
+            List<Personal> lsPers = new List<Personal>();
+            lsPers = db.Personal.ToList();
+            return Json(lsPers, JsonRequestBehavior.AllowGet);
+           // return RedirectToAction("Create");
 
-            return View(personal);
+        }
+
+        //return a json with new personals
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public JsonResult getNewPersonal ()
+        {
+            List<Personal> lsPers = new List<Personal>();
+            lsPers = db.Personal.ToList();
+            return Json(lsPers, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Personals/Edit/5
