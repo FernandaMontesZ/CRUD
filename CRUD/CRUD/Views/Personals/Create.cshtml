@@ -67,7 +67,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input id="Btn_Create" type="submit" value="Crear" class="btn btn-default" />
+                <input id="Btn_Create" onclick="return CreateData(); " type="submit" value="Crear" class="btn btn-default" />
             </div>
         </div>
         <table id="tblPersonal" class="table">
@@ -78,71 +78,77 @@
                 <th> @Html.DisplayNameFor(model => model.Edad) </th>
                 <th> @Html.DisplayNameFor(model => model.IsActive) </th>
             </tr>
-            <tbody>
+            <tbody class="tabBody">
             </tbody>
         </table>
 
-        <script type="text/javascript">
+        
+        <script  src="~/Scripts/jquery-3.4.1.js" type="text/javascript">
 
-            $(function () {
-                LoadData();
-                $("#Btn_Create").click(function () {
-                    var psl = {};
-                    psl.Nombre = $("#PerNombre").val();
-                    psl.ApePaterno = $('#PerApePa').val();
-                    psl.ApeMaterno = $('#PerApeMa').val();
-                    psl.Edad = $('#PerEdad').val();
-                    psl.IsActive = $('#PerIsActive').val();
-
-                    $.ajax({
-                        type: "POST",
-                        url: 'Personals/Create',
-                        data: '{personal:' + JSON.stringify(psl) + '}',
-                        dataType: "application/json; charset=utf-8",
-                        success: function () {
-                            $.ajax({
-                                type: 'POST',
-                                url: 'Personals/getNewPersonal',
-                                dataType: 'json',
-                                success: function (data) {
-
-                                    $.each(data, function (index, item) {
-                                        var rows = "<tr>"
-                                        " <td>" + item.Nombre + "</td>"
-                                        " <td>" + item.ApePaterno + "</td>"
-                                        "<td>" + item.ApeMaterno + "</td>"
-                                        "<td>" + item.Edad + " </td>"
-                                        "<td>" + item.IsActive + " </td>"
-                                        "</tr>";
-                                        $('#tblPersonal tbody').append(rows);
-                                    });
-                                },
-                                error: function (ex) {
-                                    //convierte archivo json a valor JS
-                                    var req = jQuery.parseJSON(response.responseText);
-                                    alert("Mensaje: " + req.Message);
-                                    alert("Tipo excepción: " + req.ExceptionType);
-                                }
-                            });
-                            return false;
-                        },
-                        error: function () {
-                            alert("Error Ingresando al personal");
-                        }
-                    });
-                    return false;
-                });
+            $(document).ready(function () {
+                CargarDatos();
             });
 
-
-            function LoadData() {
-                $("#tblPersonal tbody tr").remove();
-
+            function CargarDatos() {
+                $.ajax({
+                    type: 'GET',
+                    url: 'Personals/getNewPersonal',
+                    dataType: 'json',
+                    success: function (result) {
+                        var items = '';
+                        $.each(data, function (index, item) {
+                            items += "<tr>";
+                            items += " <td>" + item.Nombre + "</td>";
+                            items += " <td>" + item.ApePaterno + "</td>";
+                            items += "<td>" + item.ApeMaterno + "</td>";
+                            items += "<td>" + item.Edad + " </td>";
+                            items += "<td>" + item.IsActive + " </td>";
+                            items += "</tr> ";
+                        });
+                        $('#tabBody').items(items);
+                    },
+                    error: function (ex) {
+                        //convierte archivo json a valor JS
+                        var req = jQuery.parseJSON(response.responseText);
+                        alert("Mensaje: " + req.Message);
+                        alert("Tipo excepción: " + req.ExceptionType);
+                    }
+                });
             }
+            function CreateData() {
+
+                $(document).ready(function () {
+                    CargarDatos();
+                });
+
+                var psl = {};
+                psl.Nombre = $("#PerNombre").val();
+                psl.ApePaterno = $('#PerApePa').val();
+                psl.ApeMaterno = $('#PerApeMa').val();
+                psl.Edad = $('#PerEdad').val();
+                psl.IsActive = $('#PerIsActive').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: 'Personals/Create',
+                    data: '{personal:' + JSON.stringify(psl) + '}',
+                    dataType: "application/json; charset=utf-8",
+                    success: function (result) {
+                        LoadData();
+                    },
+                    error: function () {
+                        alert("Error insertando al personal");
+                    }
+                });
+            }
+           
+
+
+            
 
         </script>
     </div>
-    }
+  }
         <div>
         @Html.ActionLink("Volver a información", "Index")
     </div>

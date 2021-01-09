@@ -46,25 +46,16 @@ namespace CRUD.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Personal personal)
+        public JsonResult Create(Personal personal)
         {
-                db.Personal.Add(personal);
-                db.SaveChanges();
-            //string message = "Se guarda Correctamente";
-            List<Personal> lsPers = new List<Personal>();
-            lsPers = db.Personal.ToList();
-            return Json(lsPers, JsonRequestBehavior.AllowGet);
-           // return RedirectToAction("Create");
-
+            return Json(db.Personal.Add(personal), JsonRequestBehavior.AllowGet) ;
         }
 
-        //return a json with new personals
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        //lista de personal
         public JsonResult getNewPersonal ()
         {
             List<Personal> lsPers = new List<Personal>();
-            lsPers = db.Personal.ToList();
+            lsPers=db.Personal.ToList();
             return Json(lsPers, JsonRequestBehavior.AllowGet);
         }
 
