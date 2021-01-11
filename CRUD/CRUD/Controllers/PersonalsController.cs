@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using CRUD.Models;
@@ -18,6 +19,33 @@ namespace CRUD.Controllers
         public ActionResult Index()
         {
             return View(db.Personal.ToList());
+        }
+
+        // GET: Personals/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Personals/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Personal personal)
+        {
+            Thread.Sleep(5000);
+            bool res = false;
+            string mensaje = "Error al ingresar el registro del personal";
+            var lsPersonal = db.Personal.ToList();
+            if (lsPersonal != null)
+            {
+                db.Personal.Add(personal);
+                db.SaveChanges();
+                res = true;
+                mensaje = "Personal agregado";
+            }
+            return Json(new { res = res, mensaje = mensaje}, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Personals/Details/5
@@ -35,29 +63,7 @@ namespace CRUD.Controllers
             return View(personal);
         }
 
-        // GET: Personals/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Personals/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public JsonResult Create(Personal personal)
-        {
-            return Json(db.Personal.Add(personal), JsonRequestBehavior.AllowGet) ;
-        }
-
-        //lista de personal
-        public JsonResult getNewPersonal ()
-        {
-            List<Personal> lsPers = new List<Personal>();
-            lsPers=db.Personal.ToList();
-            return Json(lsPers, JsonRequestBehavior.AllowGet);
-        }
+        
 
         // GET: Personals/Edit/5
         public ActionResult Edit(int? id)
