@@ -13,26 +13,18 @@ namespace CRUD.Controllers
     public class PersonalsController : Controller
     {
         private EmpleadosEntities db = new EmpleadosEntities();
+        private EmpleadosBD emDB = new EmpleadosBD();
 
         // GET: Personals
         public ActionResult Index()
         {
             return View(db.Personal.ToList());
         }
-
-        // GET: Personals/Details/5
-        public ActionResult Details(int? id)
+        //GET: envia lista de todo el personal
+        public JsonResult ReadListaPersonal()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Personal personal = db.Personal.Find(id);
-            if (personal == null)
-            {
-                return HttpNotFound();
-            }
-            return View(personal);
+            var result = emDB.RealAll();
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Personals/Create
@@ -46,18 +38,52 @@ namespace CRUD.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public JsonResult Create(Personal personal)
+        public ActionResult Create(Personal personal)
         {
-            return Json(db.Personal.Add(personal), JsonRequestBehavior.AllowGet) ;
+            if (db.Personal != null)
+            {
+                db.Personal.Add(personal);
+                db.SaveChanges();
+            }
+
+            return View("Index");
         }
 
-        //lista de personal
-        public JsonResult getNewPersonal ()
+        //Obtiene empleado por id 
+        public JsonResult GetbyID(int ID_personal)
+
         {
-            List<Personal> lsPers = new List<Personal>();
-            lsPers=db.Personal.ToList();
-            return Json(lsPers, JsonRequestBehavior.AllowGet);
+            var Empleado = emDB.RealAll().Find(x => x.ID_personal.Equals(ID_personal));
+
+            return Json(Empleado, JsonRequestBehavior.AllowGet);
+
         }
+
+        public ActionResult UpdateAjax(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Personal personal = db.Personal.Find(id);
+            if (personal == null)
+            {
+                return HttpNotFound();
+            }
+            //return View(personal);
+            return Json(emDB.Update(personal), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult DeleteAjax(int ID_personal)
+        {
+            return Json(emDB.Delete(ID_personal), JsonRequestBehavior.AllowGet);
+        }
+        //lista de personal
+        //public JsonResult getNewPersonal ()
+        //{
+        //    List<Personal> lsPers = new List<Personal>();
+        //    lsPers=db.Personal.ToList();
+        //    return Json(lsPers, JsonRequestBehavior.AllowGet);
+        //}
 
         // GET: Personals/Edit/5
         public ActionResult Edit(int? id)
@@ -123,6 +149,21 @@ namespace CRUD.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        // GET: Personals/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Personal personal = db.Personal.Find(id);
+            if (personal == null)
+            {
+                return HttpNotFound();
+            }
+            return View(personal);
         }
     }
 }

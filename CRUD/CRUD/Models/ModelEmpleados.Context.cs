@@ -10,6 +10,7 @@
 namespace CRUD.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
@@ -26,5 +27,8 @@ namespace CRUD.Models
         }
     
         public virtual DbSet<Personal> Personal { get; set; }
+
+       
     }
+   
 }

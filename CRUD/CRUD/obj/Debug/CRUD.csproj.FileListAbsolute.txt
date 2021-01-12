@@ -83,7 +83,6 @@ C:\Users\mfhernandezl\source\repos\CRUD\CRUD\bin\EntityFramework.dll
 C:\Users\mfhernandezl\source\repos\CRUD\CRUD\bin\EntityFramework.SqlServer.dll
 C:\Users\mfhernandezl\source\repos\CRUD\CRUD\bin\EntityFramework.xml
 C:\Users\mfhernandezl\source\repos\CRUD\CRUD\bin\EntityFramework.SqlServer.xml
-C:\Users\mfhernandezl\Documents\GitRepos\CRUD\CRUD\CRUD\obj\Debug\CRUD.csprojAssemblyReference.cache
 C:\Users\mfhernandezl\Documents\GitRepos\CRUD\CRUD\CRUD\obj\Debug\CRUD.csproj.CoreCompileInputs.cache
 C:\Users\mfhernandezl\Documents\GitRepos\CRUD\CRUD\CRUD\obj\Debug\CRUD.dll
 C:\Users\mfhernandezl\Documents\GitRepos\CRUD\CRUD\CRUD\obj\Debug\CRUD.pdb
