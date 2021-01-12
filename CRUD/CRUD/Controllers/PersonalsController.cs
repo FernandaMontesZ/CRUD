@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using CRUD.Models;
@@ -20,12 +21,15 @@ namespace CRUD.Controllers
         {
             return View(db.Personal.ToList());
         }
+<<<<<<< HEAD
         //GET: envia lista de todo el personal
         public JsonResult ReadListaPersonal()
         {
             var result = emDB.RealAll();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+=======
+>>>>>>> c995b5ecb23af276594ba59da7e08628b4c0d910
 
         // GET: Personals/Create
         public ActionResult Create()
@@ -40,6 +44,7 @@ namespace CRUD.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Personal personal)
         {
+<<<<<<< HEAD
             if (db.Personal != null)
             {
                 db.Personal.Add(personal);
@@ -84,6 +89,38 @@ namespace CRUD.Controllers
         //    lsPers=db.Personal.ToList();
         //    return Json(lsPers, JsonRequestBehavior.AllowGet);
         //}
+=======
+            Thread.Sleep(5000);
+            bool res = false;
+            string mensaje = "Error al ingresar el registro del personal";
+            var lsPersonal = db.Personal.ToList();
+            if (lsPersonal != null)
+            {
+                db.Personal.Add(personal);
+                db.SaveChanges();
+                res = true;
+                mensaje = "Personal agregado";
+            }
+            return Json(new { res = res, mensaje = mensaje}, JsonRequestBehavior.AllowGet);
+        }
+
+        // GET: Personals/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Personal personal = db.Personal.Find(id);
+            if (personal == null)
+            {
+                return HttpNotFound();
+            }
+            return View(personal);
+        }
+
+        
+>>>>>>> c995b5ecb23af276594ba59da7e08628b4c0d910
 
         // GET: Personals/Edit/5
         public ActionResult Edit(int? id)

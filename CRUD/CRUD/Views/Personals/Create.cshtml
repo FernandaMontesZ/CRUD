@@ -67,10 +67,15 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
+<<<<<<< HEAD
                 <input id="Btn_Create" type="submit" value="Crear" class="btn btn-default" />
+=======
+                <input id="Btn_CreateAjax" type="button" value="Crear con Ajax" class="btn btn-default" />
+>>>>>>> c995b5ecb23af276594ba59da7e08628b4c0d910
             </div>
         </div>
 
+<<<<<<< HEAD
 
         <script src="~/Scripts/jquery-3.4.1.min.js"></script>
         <script src="~/Scripts/jquery-3.4.1.js"></script>
@@ -78,6 +83,68 @@
         <link href="~/Content/bootstrap.css" rel="stylesheet" />
         <script src="~/Scripts/LoadEmpleados.js"></script>
         <script>
+=======
+
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+        <script src="~/Scripts/jquery-3.4.1.js"></script>
+        
+        <script>
+
+            $(document).ready(function () {
+                $("#Btn_CreateAjax").click(function (event) {
+                    var psl = {};
+                    psl.Nombre = $("#PerNombre").val();
+                    psl.ApePaterno = $('#PerApePa').val();
+                    psl.ApeMaterno = $('#PerApeMa').val();
+                    psl.Edad = $('#PerEdad').val();
+                    psl.IsActive = $('#PerIsActive').val();
+                    $.ajax({
+
+                        type: "POST",
+                        url: 'Personals/Create',
+                        data: '{personal:' + JSON.stringify(psl) + '}',
+                        dataType: "application/json; charset=utf-8",
+                        success: function (resultado) {
+                            if (resultado.res) {
+                                alert(resultado.mensaje);
+                                window.location.href = '@Url.Action("Index", "Personals")';
+                            }
+                            else {
+                                alert(resultado.mensaje);
+                            }
+                        }
+                    });
+                });
+            });
+
+            function CargarDatos() {
+                $.ajax({
+                    type: 'GET',
+                    url: 'Personals/getNewPersonal',
+                    dataType: 'json',
+                    success: function (result) {
+                        var items = '';
+                        $.each(data, function (index, item) {
+                            items += "<tr>";
+                            items += " <td>" + item.Nombre + "</td>";
+                            items += " <td>" + item.ApePaterno + "</td>";
+                            items += "<td>" + item.ApeMaterno + "</td>";
+                            items += "<td>" + item.Edad + " </td>";
+                            items += "<td>" + item.IsActive + " </td>";
+                            items += "</tr> ";
+                        });
+                        $('#tabBody').items(items);
+                    },
+                    error: function (ex) {
+                        //convierte archivo json a valor JS
+                        var req = jQuery.parseJSON(response.responseText);
+                        alert("Mensaje: " + req.Message);
+                        alert("Tipo excepción: " + req.ExceptionType);
+                    }
+                });
+            }
+>>>>>>> c995b5ecb23af276594ba59da7e08628b4c0d910
             function CreateData() {
 
                 $(document).ready(function () {
@@ -107,6 +174,14 @@
 
                 });
             }
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> c995b5ecb23af276594ba59da7e08628b4c0d910
         </script>
     </div>
   }
